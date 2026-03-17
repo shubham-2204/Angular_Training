@@ -1,0 +1,14 @@
+<div class="todo-list">
+  <div *ngIf="todos.length === 0" class="empty-state">
+    <div class="empty-icon">📝</div>
+    <p class="empty-text">No todos to show</p>
+    <p class="empty-subtext">Add a new task above to get started!</p>
+  </div>
+
+  <app-todo-item
+    *ngFor="let todo of todos; trackBy: trackByTodoId"
+    [todo]="todo"
+    (toggle)="onToggle($event)"
+    (delete)="onDelete($event)"
+  ></app-todo-item>
+</div>

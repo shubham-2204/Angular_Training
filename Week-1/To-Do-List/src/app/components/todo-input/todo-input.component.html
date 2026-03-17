@@ -1,0 +1,60 @@
+<div class="input-container">
+  <div class="input-row">
+    <div class="input-wrapper">
+      <span class="input-icon">✏️</span>
+      <input
+        type="text"
+        [(ngModel)]="newTodoTitle"
+        (keyup.enter)="addTodo()"
+        placeholder="Write task here?"
+        class="todo-input"
+        id="todo-input-field"
+        [attr.maxlength]="maxLength"
+        [class.input-error]="isOverLimit"
+      />
+      <span class="char-counter" [class.counter-danger]="charCount >= maxLength">
+        {{ charCount }}/{{ maxLength }}
+      </span>
+    </div>
+
+    <div class="priority-selector">
+      <button
+        *ngFor="let p of ['low', 'medium', 'high']"
+        class="priority-btn"
+        [ngClass]="{
+          'priority-low': p === 'low',
+          'priority-medium': p === 'medium',
+          'priority-high': p === 'high',
+          active: selectedPriority === p
+        }"
+        (click)="selectedPriority = $any(p)"
+      >
+        {{ p | titlecase }}
+      </button>
+    </div>
+
+    <button
+      class="add-btn"
+      (click)="addTodo()"
+      id="add-todo-btn"
+      [disabled]="!newTodoTitle.trim() || isOverLimit || !selectedDate || isDateInvalid"
+    >
+      <span class="add-icon">+</span> Add
+    </button>
+  </div>
+
+  <!-- Date Picker Row -->
+  <div class="date-row">
+    <span class="date-icon">📅</span>
+    <input
+      type="date"
+      class="date-input"
+      [(ngModel)]="selectedDate"
+      [min]="todayStr"
+      [class.date-error]="isDateInvalid"
+    />
+    <span class="date-hint" *ngIf="!selectedDate">Select a due date</span>
+    <span class="date-hint date-valid" *ngIf="selectedDate && !isDateInvalid">✔ Due: {{ selectedDate }}</span>
+    <span class="date-hint date-invalid" *ngIf="isDateInvalid">✘ Past date not allowed</span>
+  </div>
+</div>

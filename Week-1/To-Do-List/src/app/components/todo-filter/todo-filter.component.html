@@ -1,0 +1,12 @@
+<div class="filter-bar">
+  <div class="filter-buttons">
+    <button *ngFor="let f of filters" class="filter-btn" [ngClass]="{ active: currentFilter === f.value }"
+      (click)="setFilter(f.value)" [id]="'filter-' + f.value">
+      <span class="filter-icon">{{ f.icon }}</span>
+      <span class="filter-label">{{ f.label }}</span>
+      <span class="filter-count" [ngClass]="'count-' + f.value">
+        {{ getCount(f.value) }}
+      </span>
+    </button>
+  </div>
+</div>
