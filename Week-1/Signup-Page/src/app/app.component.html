@@ -1,0 +1,19 @@
+<div class="page-wrapper">
+  <div class="card">
+
+    <ng-container *ngIf="!isSubmitted">
+      <app-signup-form
+        [isLoading]="isLoading"
+        (formSubmitted)="onFormSubmitted($event)"
+      />
+    </ng-container>
+
+    <ng-container *ngIf="isSubmitted && userData">
+      <app-success-card [userData]="userData" />
+      <button class="back-btn" (click)="resetForm()">
+        ← Register Another
+      </button>
+    </ng-container>
+
+  </div>
+</div>

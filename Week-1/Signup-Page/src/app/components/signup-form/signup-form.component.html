@@ -1,0 +1,168 @@
+<form class="signup-form" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+
+  <h1 class="form-title">Create Account</h1>
+  <p class="form-subtitle">Join us today — it's free!</p>
+
+  <!-- Full Name -->
+  <div class="field-group" [class.error]="isInvalid('fullName')" [class.success]="isValid('fullName')">
+    <label class="field-label" for="fullName">Full Name</label>
+    <div class="input-wrapper">
+      <span class="field-icon">👤</span>
+      <input
+        id="fullName"
+        type="text"
+        class="field-input"
+        formControlName="fullName"
+        placeholder="John Doe"
+        [attr.aria-invalid]="isInvalid('fullName')"
+        [attr.autocomplete]="'name'"
+        [attr.maxlength]="50"
+        [style.borderColor]="getBorderColor('fullName')"
+        (focus)="onFocus('fullName')"
+        (blur)="onBlur('fullName')"
+      />
+      <span class="status-icon" *ngIf="isValid('fullName')">✅</span>
+      <span class="status-icon" *ngIf="isInvalid('fullName')">❌</span>
+    </div>
+    <div class="error-messages" *ngIf="isInvalid('fullName')">
+      <span *ngIf="fullName.errors?.['required']">Full name is required.</span>
+      <span *ngIf="fullName.errors?.['minlength']">Minimum 3 characters required.</span>
+    </div>
+  </div>
+
+  <!-- Email -->
+  <div class="field-group" [class.error]="isInvalid('email')" [class.success]="isValid('email')">
+    <label class="field-label" for="email">Email Address</label>
+    <div class="input-wrapper">
+      <span class="field-icon">📧</span>
+      <input
+        id="email"
+        type="email"
+        class="field-input"
+        formControlName="email"
+        placeholder="john@example.com"
+        [attr.aria-invalid]="isInvalid('email')"
+        [attr.autocomplete]="'email'"
+        [style.borderColor]="getBorderColor('email')"
+        (focus)="onFocus('email')"
+        (blur)="onBlur('email')"
+      />
+      <span class="status-icon" *ngIf="isValid('email')">✅</span>
+      <span class="status-icon" *ngIf="isInvalid('email')">❌</span>
+    </div>
+    <div class="error-messages" *ngIf="isInvalid('email')">
+      <span *ngIf="email.errors?.['required']">Email is required.</span>
+      <span *ngIf="email.errors?.['email']">Enter a valid email address.</span>
+    </div>
+  </div>
+
+  <!-- Phone -->
+  <div class="field-group" [class.error]="isInvalid('phone')" [class.success]="isValid('phone')">
+    <label class="field-label" for="phone">Phone Number</label>
+    <div class="input-wrapper">
+      <span class="field-icon">📱</span>
+      <input
+        id="phone"
+        type="tel"
+        class="field-input"
+        formControlName="phone"
+        placeholder="9876543210"
+        [attr.aria-invalid]="isInvalid('phone')"
+        [attr.autocomplete]="'tel'"
+        [attr.maxlength]="10"
+        [style.borderColor]="getBorderColor('phone')"
+        (focus)="onFocus('phone')"
+        (blur)="onBlur('phone')"
+      />
+      <span class="status-icon" *ngIf="isValid('phone')">✅</span>
+      <span class="status-icon" *ngIf="isInvalid('phone')">❌</span>
+    </div>
+    <div class="error-messages" *ngIf="isInvalid('phone')">
+      <span *ngIf="phone.errors?.['required']">Phone number is required.</span>
+      <span *ngIf="phone.errors?.['invalidPhone']">Enter a valid 10-digit Indian mobile number.</span>
+    </div>
+  </div>
+
+  <!-- Password -->
+  <div class="field-group" [class.error]="isInvalid('password')" [class.success]="isValid('password')">
+    <label class="field-label" for="password">Password</label>
+    <div class="input-wrapper">
+      <span class="field-icon">🔒</span>
+      <input
+        id="password"
+        [type]="showPassword ? 'text' : 'password'"
+        class="field-input"
+        formControlName="password"
+        placeholder="Min 8 chars, uppercase, number, symbol"
+        [attr.aria-invalid]="isInvalid('password')"
+        [attr.autocomplete]="'new-password'"
+        [style.borderColor]="getBorderColor('password')"
+        (focus)="onFocus('password')"
+        (blur)="onBlur('password')"
+      />
+      <button
+        type="button"
+        class="toggle-password"
+        (click)="showPassword = !showPassword"
+        [attr.aria-label]="showPassword ? 'Hide password' : 'Show password'"
+      >
+        {{ showPassword ? '🙈' : '👁️' }}
+      </button>
+    </div>
+    <app-password-strength [password]="passwordValue" />
+    <div class="error-messages" *ngIf="isInvalid('password')">
+      <span *ngIf="password.errors?.['required']">Password is required.</span>
+      <span *ngIf="password.errors?.['minLength']">At least 8 characters required.</span>
+      <span *ngIf="password.errors?.['uppercase']">Must contain at least one uppercase letter.</span>
+      <span *ngIf="password.errors?.['number']">Must contain at least one number.</span>
+      <span *ngIf="password.errors?.['special']">Must contain at least one special character.</span>
+    </div>
+  </div>
+
+  <!-- Confirm Password -->
+  <div class="field-group"
+    [class.error]="isInvalid('confirmPassword') || (form.errors?.['passwordMismatch'] && confirmPassword.touched)"
+    [class.success]="isValid('confirmPassword') && !form.errors?.['passwordMismatch']">
+    <label class="field-label" for="confirmPassword">Confirm Password</label>
+    <div class="input-wrapper">
+      <span class="field-icon">🔐</span>
+      <input
+        id="confirmPassword"
+        [type]="showConfirmPassword ? 'text' : 'password'"
+        class="field-input"
+        formControlName="confirmPassword"
+        placeholder="Re-enter your password"
+        [attr.aria-invalid]="isInvalid('confirmPassword')"
+        [attr.autocomplete]="'new-password'"
+        [style.borderColor]="getBorderColor('confirmPassword')"
+        (focus)="onFocus('confirmPassword')"
+        (blur)="onBlur('confirmPassword')"
+      />
+      <button
+        type="button"
+        class="toggle-password"
+        (click)="showConfirmPassword = !showConfirmPassword"
+      >
+        {{ showConfirmPassword ? '🙈' : '👁️' }}
+      </button>
+    </div>
+    <div class="error-messages" *ngIf="confirmPassword.touched">
+      <span *ngIf="confirmPassword.errors?.['required']">Please confirm your password.</span>
+      <span *ngIf="form.errors?.['passwordMismatch'] && !confirmPassword.errors?.['required']">
+        Passwords do not match.
+      </span>
+    </div>
+  </div>
+
+  
+  <button
+    type="submit"
+    class="submit-btn"
+    [disabled]="isLoading"
+    [class.loading]="isLoading"
+  >
+    <span *ngIf="!isLoading">🚀 Create Account</span>
+    <span *ngIf="isLoading" class="loader-text">⏳ Creating account...</span>
+  </button>
+
+</form>
