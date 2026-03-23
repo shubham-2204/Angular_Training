@@ -1,0 +1,74 @@
+<div class="skeleton-wrapper" *ngIf="state.isLoading">
+  <div class="skeleton skeleton-avatar"></div>
+  <div class="skeleton-info">
+    <div class="skeleton skeleton-line wide"></div>
+    <div class="skeleton skeleton-line medium"></div>
+    <div class="skeleton skeleton-line short"></div>
+  </div>
+</div>
+
+<div class="error-state" *ngIf="state.hasError">
+  <span class="error-icon"></span>
+  <p class="error-message">{{ state.errorMessage }}</p>
+  <button class="retry-btn" (click)="loadProfile()">Retry</button>
+</div>
+<div class="profile-wrapper" *ngIf="!state.isLoading && !state.hasError && student">
+  <div class="profile-card">
+    <div class="avatar-section">
+      <img class="avatar" [src]="student.avatarUrl" [alt]="getAvatarAlt()"
+        [attr.aria-label]="'Profile photo of ' + student.name" [attr.title]="student.name" />
+      <div class="avatar-info">
+        <h2 class="student-name">{{ student.name }}</h2>
+        <p class="student-roll">{{ student.rollNumber }}</p>
+        <span class="dept-badge">{{ student.department }}</span>
+      </div>
+    </div>
+    <div class="cgpa-section">
+      <div class="cgpa-header">
+        <span class="cgpa-label">CGPA</span>
+        <span class="cgpa-value" [ngClass]="getCgpaClass()">
+          {{ student.cgpa }} / 10
+        </span>
+      </div>
+      <div class="cgpa-track">
+        <div class="cgpa-bar" [ngClass]="getCgpaClass()" [style.setProperty]="'--cgpa-width,' + cgpaWidthPercent + '%'">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <div class="info-content">
+        <span class="info-label">Email</span>
+        <span class="info-value" [attr.aria-label]="'Email: ' + student.email">
+          {{ student.email }}
+        </span>
+      </div>
+    </div>
+
+    <div class="info-card">
+      <div class="info-content">
+        <span class="info-label">Phone</span>
+        <span class="info-value" [attr.aria-label]="'Phone: ' + student.phone">
+          {{ student.phone }}
+        </span>
+      </div>
+    </div>
+
+    <div class="info-card">
+      <div class="info-content">
+        <span class="info-label">Semester</span>
+        <span class="info-value">Semester {{ student.semester }}</span>
+      </div>
+    </div>
+
+    <div class="info-card">
+      <div class="info-content">
+        <span class="info-label">Enrollment Year</span>
+        <span class="info-value">{{ student.enrollmentYear }}</span>
+      </div>
+    </div>
+
+  </div>
+</div>

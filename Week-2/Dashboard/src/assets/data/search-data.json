@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "title": "Data Structures & Algorithms",
+    "category": "course",
+    "description": "Learn arrays, linked lists, trees, graphs and sorting algorithms."
+  },
+  {
+    "id": 2,
+    "title": "Database Management Systems",
+    "category": "course",
+    "description": "Covers SQL, normalization, transactions and database design."
+  },
+  {
+    "id": 3,
+    "title": "Operating Systems",
+    "category": "course",
+    "description": "Process management, memory management, file systems and scheduling."
+  },
+  {
+    "id": 4,
+    "title": "Machine Learning",
+    "category": "course",
+    "description": "Supervised, unsupervised learning, neural networks and model evaluation."
+  },
+  {
+    "id": 5,
+    "title": "Cloud Computing",
+    "category": "course",
+    "description": "AWS, Azure, GCP fundamentals, deployment models and cloud services."
+  },
+  {
+    "id": 6,
+    "title": "Dr. Rajesh Kumar",
+    "category": "faculty",
+    "description": "Professor, Dept. of CSE. Specialization: Algorithms & Competitive Programming."
+  },
+  {
+    "id": 7,
+    "title": "Prof. Sunita Verma",
+    "category": "faculty",
+    "description": "Associate Professor, Dept. of CSE. Specialization: Database Systems."
+  },
+  {
+    "id": 8,
+    "title": "Dr. Amit Singh",
+    "category": "faculty",
+    "description": "Professor, Dept. of CSE. Specialization: Operating Systems & Linux."
+  },
+  {
+    "id": 9,
+    "title": "Dr. Vikram Rao",
+    "category": "faculty",
+    "description": "Assistant Professor, Dept. of CSE. Specialization: Machine Learning & AI."
+  },
+  {
+    "id": 10,
+    "title": "TechFest 2026 Hackathon",
+    "category": "event",
+    "description": "Annual college hackathon. Register before 20th March 2026."
+  },
+  {
+    "id": 11,
+    "title": "Guest Lecture: System Design",
+    "category": "event",
+    "description": "Industry expert session on System Design. 22nd March, Seminar Hall."
+  },
+  {
+    "id": 12,
+    "title": "Sports Day 2026",
+    "category": "event",
+    "description": "Annual sports event on 28th March 2026. Register for your sport."
+  },
+  {
+    "id": 13,
+    "title": "NPTEL Online Courses",
+    "category": "resource",
+    "description": "Free online courses from IITs and IISc on various CS topics."
+  },
+  {
+    "id": 14,
+    "title": "College Library Portal",
+    "category": "resource",
+    "description": "Access digital books, research papers and study materials online."
+  },
+  {
+    "id": 15,
+    "title": "LeetCode Practice",
+    "category": "resource",
+    "description": "Practice DSA problems for placements and competitive programming."
+  }
+]

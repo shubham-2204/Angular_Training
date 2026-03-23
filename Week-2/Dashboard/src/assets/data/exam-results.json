@@ -1,0 +1,90 @@
+[
+  {
+    "id": 1,
+    "subject": "Data Structures & Algorithms",
+    "subjectCode": "CS-301",
+    "marksObtained": 87,
+    "totalMarks": 100,
+    "grade": "A",
+    "status": "pass",
+    "semester": 5,
+    "examDate": "2025-11-15"
+  },
+  {
+    "id": 2,
+    "subject": "Database Management Systems",
+    "subjectCode": "CS-302",
+    "marksObtained": 91,
+    "totalMarks": 100,
+    "grade": "A+",
+    "status": "pass",
+    "semester": 5,
+    "examDate": "2025-11-17"
+  },
+  {
+    "id": 3,
+    "subject": "Operating Systems",
+    "subjectCode": "CS-303",
+    "marksObtained": 78,
+    "totalMarks": 100,
+    "grade": "B+",
+    "status": "pass",
+    "semester": 5,
+    "examDate": "2025-11-19"
+  },
+  {
+    "id": 4,
+    "subject": "Computer Networks",
+    "subjectCode": "CS-304",
+    "marksObtained": 45,
+    "totalMarks": 100,
+    "grade": "F",
+    "status": "fail",
+    "semester": 5,
+    "examDate": "2025-11-21"
+  },
+  {
+    "id": 5,
+    "subject": "Software Engineering",
+    "subjectCode": "CS-305",
+    "marksObtained": 83,
+    "totalMarks": 100,
+    "grade": "A",
+    "status": "pass",
+    "semester": 5,
+    "examDate": "2025-11-23"
+  },
+  {
+    "id": 6,
+    "subject": "Discrete Mathematics",
+    "subjectCode": "CS-201",
+    "marksObtained": 72,
+    "totalMarks": 100,
+    "grade": "B",
+    "status": "pass",
+    "semester": 4,
+    "examDate": "2025-05-10"
+  },
+  {
+    "id": 7,
+    "subject": "Computer Organization",
+    "subjectCode": "CS-202",
+    "marksObtained": 88,
+    "totalMarks": 100,
+    "grade": "A",
+    "status": "pass",
+    "semester": 4,
+    "examDate": "2025-05-12"
+  },
+  {
+    "id": 8,
+    "subject": "Object Oriented Programming",
+    "subjectCode": "CS-203",
+    "marksObtained": 95,
+    "totalMarks": 100,
+    "grade": "A+",
+    "status": "pass",
+    "semester": 4,
+    "examDate": "2025-05-14"
+  }
+]
