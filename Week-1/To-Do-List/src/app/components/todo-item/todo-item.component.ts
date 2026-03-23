@@ -16,22 +16,9 @@ export class TodoItemComponent {
   @Output() toggle = new EventEmitter<number>();
   @Output() delete = new EventEmitter<number>();
 
-  get priorityColor(): string {
-    switch (this.todo.priority) {
-      case 'low':    return '#34d399';
-      case 'medium': return '#fbbf24';
-      case 'high':   return '#f87171';
-    }
+  get priorityClass(): string {
+    return `priority-${this.todo.priority}`;
   }
-
-  get priorityGlow(): string {
-    switch (this.todo.priority) {
-      case 'low':    return 'rgba(52, 211, 153, 0.3)';
-      case 'medium': return 'rgba(251, 191, 36, 0.3)';
-      case 'high':   return 'rgba(248, 113, 113, 0.3)';
-    }
-  }
-
 
   private get todayStart(): Date {
     const d = new Date();

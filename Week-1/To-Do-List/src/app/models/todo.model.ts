@@ -1,10 +1,22 @@
+export enum Priority {
+  Low = 'low',
+  Medium = 'medium',
+  High = 'high'
+}
+
+export enum FilterType {
+  All = 'all',
+  Active = 'active',
+  Completed = 'completed'
+}
+
 export interface Todo {
   id: number;
   title: string;
   completed: boolean;
-  priority: 'low' | 'medium' | 'high';
+  priority: Priority;
   createdAt: Date;
   dueDate: Date;
 }
 
-export type FilterType = 'all' | 'active' | 'completed';
+

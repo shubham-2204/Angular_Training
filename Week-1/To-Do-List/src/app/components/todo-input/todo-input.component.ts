@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Priority } from '../../models/todo.model';
 
 @Component({
   selector: 'app-todo-input',
@@ -11,10 +12,11 @@ import { CommonModule } from '@angular/common';
 })
 export class TodoInputComponent {
   newTodoTitle = '';
-  selectedPriority: 'low' | 'medium' | 'high' = 'medium';
+  selectedPriority: Priority = Priority.Medium;
   selectedDate = '';
   readonly maxLength = 10;
 
+  Priority = Priority;
   
   get todayStr(): string {
     return new Date().toISOString().split('T')[0];
@@ -35,7 +37,7 @@ export class TodoInputComponent {
 
   @Output() todoAdded = new EventEmitter<{
     title: string;
-    priority: 'low' | 'medium' | 'high';
+    priority: Priority;
     dueDate: Date;
   }>();
 
@@ -52,7 +54,7 @@ export class TodoInputComponent {
         dueDate: new Date(this.selectedDate),
       });
       this.newTodoTitle = '';
-      this.selectedPriority = 'medium';
+      this.selectedPriority = Priority.Medium;
       this.selectedDate = '';
     }
   }

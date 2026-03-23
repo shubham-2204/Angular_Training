@@ -18,20 +18,20 @@
     </div>
 
     <div class="priority-selector">
-      <button
-        *ngFor="let p of ['low', 'medium', 'high']"
-        class="priority-btn"
-        [ngClass]="{
-          'priority-low': p === 'low',
-          'priority-medium': p === 'medium',
-          'priority-high': p === 'high',
-          active: selectedPriority === p
-        }"
-        (click)="selectedPriority = $any(p)"
-      >
-        {{ p | titlecase }}
-      </button>
-    </div>
+  <button
+    *ngFor="let p of [Priority.Low, Priority.Medium, Priority.High]"  
+    class="priority-btn"
+    [ngClass]="{
+      'priority-low': p === Priority.Low,
+      'priority-medium': p === Priority.Medium,
+      'priority-high': p === Priority.High,
+      active: selectedPriority === p
+    }"
+    (click)="selectedPriority = p" 
+  >
+    {{ p | titlecase }}
+  </button>
+</div>
 
     <button
       class="add-btn"

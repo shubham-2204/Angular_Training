@@ -162,6 +162,21 @@
 }
 
 .due-overdue {
-  color: #f87171;
+  color: rgb(248, 113, 113);
   background: rgba(248, 113, 113, 0.1);
+}
+
+.priority-low {
+  border-left: 4px solid rgb(52, 211, 153);
+  box-shadow: 0 0 8px rgba(52, 211, 153, 0.3);
+}
+
+.priority-medium {
+  border-left: 4px solid rgb(251, 191, 36);
+  box-shadow: 0 0 8px rgba(251, 191, 36, 0.3);
+}
+
+.priority-high {
+  border-left: 4px solid rgb(248, 113, 113);
+  box-shadow: 0 0 8px rgba(248, 113, 113, 0.3);
 }

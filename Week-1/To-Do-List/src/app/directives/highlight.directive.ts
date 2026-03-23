@@ -5,19 +5,15 @@ import { Directive, ElementRef, HostListener, Input } from '@angular/core';
   standalone: true,
 })
 export class HighlightDirective {
-  @Input() appHighlight = 'rgba(255, 255, 255, 0.08)';
-
-  private originalBg = '';
+  @Input() appHighlight = 'app-highlight';
 
   constructor(private el: ElementRef) {}
 
   @HostListener('mouseenter') onMouseEnter(): void {
-    this.originalBg = this.el.nativeElement.style.backgroundColor;
-    this.el.nativeElement.style.backgroundColor = this.appHighlight;
-    this.el.nativeElement.style.transition = 'background-color 0.3s ease';
+    this.el.nativeElement.classList.add('app-highlight');
   }
 
   @HostListener('mouseleave') onMouseLeave(): void {
-    this.el.nativeElement.style.backgroundColor = this.originalBg;
+    this.el.nativeElement.classList.remove('app-highlight');
   }
 }

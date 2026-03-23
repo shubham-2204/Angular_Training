@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Todo, FilterType } from '../models/todo.model';
+import { Todo, FilterType, Priority } from '../models/todo.model';
 
 @Injectable({
   providedIn: 'root',
@@ -12,14 +12,14 @@ export class TodoService {
     return this.todos;
   }
 
-  addTodo(title: string, priority: 'low' | 'medium' | 'high', dueDate: Date): void {
+  addTodo(title: string, priority: Priority, dueDate: Date): void {
     const todo: Todo = {
       id: this.nextId++,
       title: title.trim(),
       completed: false,
       priority,
       createdAt: new Date(),
-      dueDate,  // 👈 user selected date
+      dueDate,
     };
     this.todos.unshift(todo);
   }
@@ -37,18 +37,18 @@ export class TodoService {
 
   getFilteredTodos(filter: FilterType): Todo[] {
     switch (filter) {
-      case 'active':
+      case FilterType.Active:    
         return this.todos.filter((t) => !t.completed);
-      case 'completed':
+      case FilterType.Completed: 
         return this.todos.filter((t) => t.completed);
-      default:
+      default:                   
         return this.todos;
     }
   }
 
-  getStats(): { total: number; active: number; completed: number } {
+  getStats(): { all: number; active: number; completed: number } {
     return {
-      total: this.todos.length,
+      all: this.todos.length,
       active: this.todos.filter((t) => !t.completed).length,
       completed: this.todos.filter((t) => t.completed).length,
     };
