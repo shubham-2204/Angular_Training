@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --color-bg-start:  rgba(15, 12, 41, 1);
+  --color-bg-mid:    rgba(48, 43, 99, 1);
+  --color-bg-end:    rgba(36, 36, 62, 1);
+  --color-primary:   rgba(99, 102, 241, 1);
+  --color-success:   rgba(16, 185, 129, 1);
+  --color-error:     rgba(239, 68, 68, 1);
+  --color-warning:   rgba(245, 158, 11, 1);
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Inter', sans-serif;
+  color: rgba(240, 240, 245, 1);
+  background: linear-gradient(
+    135deg,
+    var(--color-bg-start),
+    var(--color-bg-mid),
+    var(--color-bg-end)
+  );
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+}
+
+::selection {
+  background: rgba(99, 102, 241, 0.35);
+  color: rgba(255, 255, 255, 1);
+}

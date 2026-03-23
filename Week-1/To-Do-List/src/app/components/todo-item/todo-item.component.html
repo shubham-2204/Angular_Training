@@ -1,0 +1,33 @@
+<div class="todo-item" appHighlight
+  [ngClass]="[priorityClass, todo.completed ? 'completed' : '']">
+  <div class="todo-left">
+    <button class="check-btn" [ngClass]="{ checked: todo.completed }" (click)="onToggle()" [id]="'toggle-' + todo.id">
+      <span *ngIf="todo.completed" class="check-mark">✓</span>
+    </button>
+
+    <div class="todo-content">
+      <span class="todo-title" [ngClass]="{ 'title-done': todo.completed }">
+        {{ todo.title }}
+      </span>
+      <div class="todo-meta">
+        <span *ngIf="!todo.completed" class="priority-badge" [ngClass]="'badge-' + todo.priority">
+          {{ todo.priority | titlecase }}
+        </span>
+        <span class="todo-date">
+          🕐 {{ todo.createdAt | date : 'short' }}
+        </span>
+        <span class="due-date" [ngClass]="{
+            'due-overdue': isDueOverdue,
+            'due-today': isDueToday,
+            'due-upcoming': !isDueOverdue && !isDueToday
+          }">
+          📅 {{ todo.dueDate | date: 'mediumDate' }}
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <button class="delete-btn" (click)="onDelete()" [id]="'delete-' + todo.id" title="Delete todo">
+    🗑️
+  </button>
+</div>

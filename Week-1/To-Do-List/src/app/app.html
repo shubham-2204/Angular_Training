@@ -1,0 +1,33 @@
+<div class="app-wrapper">
+  <div class="bg-orb orb-1"></div>
+  <div class="bg-orb orb-2"></div>
+  <div class="bg-orb orb-3"></div>
+
+  <div class="app-container">
+    <header class="app-header">
+      <div class="header-icon">✅</div>
+      <h1 class="app-title">Todo List</h1>
+      <p class="app-subtitle">Stay organized, stay productive</p>
+    </header>
+
+    <main class="card">
+      <app-todo-input (todoAdded)="onTodoAdded($event)"></app-todo-input>
+
+      <app-todo-filter
+        [currentFilter]="currentFilter"
+        [stats]="stats"
+        (filterChanged)="onFilterChanged($event)"
+      ></app-todo-filter>
+
+      <app-todo-list
+        [todos]="filteredTodos"
+        (toggleTodo)="onToggleTodo($event)"
+        (deleteTodo)="onDeleteTodo($event)"
+      ></app-todo-list>
+    </main>
+    
+    <footer class="app-footer">
+      <p>Built with <span class="heart">❤️</span> using Angular</p>
+    </footer>
+  </div>
+</div>
