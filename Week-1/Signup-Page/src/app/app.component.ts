@@ -18,8 +18,6 @@ export class AppComponent {
 
   onFormSubmitted(data: SignupFormData): void {
     this.isLoading = true;
-
-    // Simulate async API call
     setTimeout(() => {
       this.isLoading   = false;
       this.isSubmitted = true;

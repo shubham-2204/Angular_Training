@@ -7,19 +7,19 @@
 }
 
 :root {
-  --color-bg-start:  rgb(15, 12, 41);
-  --color-bg-mid:    rgb(48, 43, 99);
-  --color-bg-end:    rgb(36, 36, 62);
-  --color-primary:   rgb(99, 102, 241);
-  --color-success:   rgb(16, 185, 129);
-  --color-error:     rgb(239, 68, 68);
-  --color-warning:   rgb(245, 158, 11);
+  --color-bg-start:  rgba(15, 12, 41, 1);
+  --color-bg-mid:    rgba(48, 43, 99, 1);
+  --color-bg-end:    rgba(36, 36, 62, 1);
+  --color-primary:   rgba(99, 102, 241, 1);
+  --color-success:   rgba(16, 185, 129, 1);
+  --color-error:     rgba(239, 68, 68, 1);
+  --color-warning:   rgba(245, 158, 11, 1);
 }
 
 html, body {
   height: 100%;
   font-family: 'Inter', sans-serif;
-  color: rgb(240, 240, 245);
+  color: rgba(240, 240, 245, 1);
   background: linear-gradient(
     135deg,
     var(--color-bg-start),
@@ -39,5 +39,5 @@ html, body {
 
 ::selection {
   background: rgba(99, 102, 241, 0.35);
-  color: rgb(255, 255, 255);
+  color: rgba(255, 255, 255, 1);
 }

@@ -3,7 +3,6 @@
   <h1 class="form-title">Create Account</h1>
   <p class="form-subtitle">Join us today — it's free!</p>
 
-  <!-- Full Name -->
   <div class="field-group" [class.error]="isInvalid('fullName')" [class.success]="isValid('fullName')">
     <label class="field-label" for="fullName">Full Name</label>
     <div class="input-wrapper">
@@ -17,7 +16,7 @@
         [attr.aria-invalid]="isInvalid('fullName')"
         [attr.autocomplete]="'name'"
         [attr.maxlength]="50"
-        [style.borderColor]="getBorderColor('fullName')"
+        [ngClass]="getFieldClass('fullName')"
         (focus)="onFocus('fullName')"
         (blur)="onBlur('fullName')"
       />
@@ -27,10 +26,10 @@
     <div class="error-messages" *ngIf="isInvalid('fullName')">
       <span *ngIf="fullName.errors?.['required']">Full name is required.</span>
       <span *ngIf="fullName.errors?.['minlength']">Minimum 3 characters required.</span>
+      <span *ngIf="fullName.errors?.['whitespace']">Name cannot be blank spaces only.</span>
     </div>
   </div>
 
-  <!-- Email -->
   <div class="field-group" [class.error]="isInvalid('email')" [class.success]="isValid('email')">
     <label class="field-label" for="email">Email Address</label>
     <div class="input-wrapper">
@@ -43,7 +42,7 @@
         placeholder="john@example.com"
         [attr.aria-invalid]="isInvalid('email')"
         [attr.autocomplete]="'email'"
-        [style.borderColor]="getBorderColor('email')"
+        [ngClass]="getFieldClass('email')"
         (focus)="onFocus('email')"
         (blur)="onBlur('email')"
       />
@@ -53,10 +52,10 @@
     <div class="error-messages" *ngIf="isInvalid('email')">
       <span *ngIf="email.errors?.['required']">Email is required.</span>
       <span *ngIf="email.errors?.['email']">Enter a valid email address.</span>
+      <span *ngIf="email.errors?.['whitespace']">Email cannot be blank spaces only.</span>
     </div>
   </div>
 
-  <!-- Phone -->
   <div class="field-group" [class.error]="isInvalid('phone')" [class.success]="isValid('phone')">
     <label class="field-label" for="phone">Phone Number</label>
     <div class="input-wrapper">
@@ -70,7 +69,7 @@
         [attr.aria-invalid]="isInvalid('phone')"
         [attr.autocomplete]="'tel'"
         [attr.maxlength]="10"
-        [style.borderColor]="getBorderColor('phone')"
+        [ngClass]="getFieldClass('phone')"
         (focus)="onFocus('phone')"
         (blur)="onBlur('phone')"
       />
@@ -83,7 +82,6 @@
     </div>
   </div>
 
-  <!-- Password -->
   <div class="field-group" [class.error]="isInvalid('password')" [class.success]="isValid('password')">
     <label class="field-label" for="password">Password</label>
     <div class="input-wrapper">
@@ -96,7 +94,7 @@
         placeholder="Min 8 chars, uppercase, number, symbol"
         [attr.aria-invalid]="isInvalid('password')"
         [attr.autocomplete]="'new-password'"
-        [style.borderColor]="getBorderColor('password')"
+        [ngClass]="getFieldClass('password')"
         (focus)="onFocus('password')"
         (blur)="onBlur('password')"
       />
@@ -119,7 +117,6 @@
     </div>
   </div>
 
-  <!-- Confirm Password -->
   <div class="field-group"
     [class.error]="isInvalid('confirmPassword') || (form.errors?.['passwordMismatch'] && confirmPassword.touched)"
     [class.success]="isValid('confirmPassword') && !form.errors?.['passwordMismatch']">
@@ -134,7 +131,7 @@
         placeholder="Re-enter your password"
         [attr.aria-invalid]="isInvalid('confirmPassword')"
         [attr.autocomplete]="'new-password'"
-        [style.borderColor]="getBorderColor('confirmPassword')"
+        [ngClass]="getFieldClass('confirmPassword')"
         (focus)="onFocus('confirmPassword')"
         (blur)="onBlur('confirmPassword')"
       />
@@ -153,8 +150,6 @@
       </span>
     </div>
   </div>
-
-  
   <button
     type="submit"
     class="submit-btn"
@@ -164,5 +159,4 @@
     <span *ngIf="!isLoading">🚀 Create Account</span>
     <span *ngIf="isLoading" class="loader-text">⏳ Creating account...</span>
   </button>
-
 </form>

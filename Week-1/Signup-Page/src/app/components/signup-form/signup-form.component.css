@@ -8,7 +8,7 @@
   font-size: 2rem;
   font-weight: 800;
   text-align: center;
-  background: linear-gradient(135deg, #fff, #c4b5fd);
+  background: linear-gradient(135deg, rgba(255, 255, 255,1), rgba(196, 181, 253,1));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -22,7 +22,6 @@
   margin-bottom: 8px;
 }
 
-/* Field Group */
 .field-group {
   display: flex;
   flex-direction: column;
@@ -36,7 +35,6 @@
   letter-spacing: 0.3px;
 }
 
-/* Input Wrapper */
 .input-wrapper {
   position: relative;
   display: flex;
@@ -57,7 +55,7 @@
   border: 2px solid rgba(255, 255, 255, 0.12);
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.05);
-  color: #f0f0f5;
+  color: rgb(240, 240, 245);
   font-size: 0.95rem;
   font-family: 'Inter', sans-serif;
   transition: background 0.3s ease, box-shadow 0.3s ease;
@@ -74,8 +72,18 @@
   background: rgba(99, 102, 241, 0.06);
   box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
 }
+.field-input.field-error {
+  border-color: rgba(239, 68, 68, 1);
+}
 
-/* Status Icons */
+.field-input.field-success {
+  border-color: rgba(16, 185, 129, 1);
+}
+
+.field-input.field-focused {
+  border-color: rgba(99, 102, 241, 1);
+}
+
 .status-icon {
   position: absolute;
   right: 14px;
@@ -83,7 +91,6 @@
   pointer-events: none;
 }
 
-/* Toggle Password */
 .toggle-password {
   position: absolute;
   right: 14px;
@@ -100,11 +107,9 @@
 
 .toggle-password:hover { color: rgba(255, 255, 255, 0.9); }
 
-/* Error / Success States */
-.field-group.error .field-label   { color: #fca5a5; }
-.field-group.success .field-label { color: #6ee7b7; }
+.field-group.error .field-label   { color: rgb(252, 165, 165); }
+.field-group.success .field-label { color: rgb(110, 231, 183); }
 
-/* Error Messages */
 .error-messages {
   display: flex;
   flex-direction: column;
@@ -113,18 +118,17 @@
 
 .error-messages span {
   font-size: 0.78rem;
-  color: #fca5a5;
+  color: rgb(252, 165, 165);
   font-weight: 500;
   padding-left: 4px;
 }
 
-/* Submit Button */
 .submit-btn {
   margin-top: 8px;
   padding: 15px;
   border: none;
   border-radius: 14px;
-  background: linear-gradient(135deg, #6366f1, #a855f7, #ec4899);
+  background: linear-gradient(135deg, rgb(99, 102, 241), rgb(168, 85, 247), rgb(236, 72, 153));
   background-size: 200% 200%;
   color: white;
   font-size: 1rem;

@@ -1,5 +1,13 @@
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
+export function noWhitespaceValidator(): ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null => {
+    const value: string = control.value || '';
+    if (!value) return null;
+    const isValid = value.trim() != ''; 
+    return isValid ? null : { whitespace: true };
+  };
+}
 
 export function passwordStrengthValidator(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
