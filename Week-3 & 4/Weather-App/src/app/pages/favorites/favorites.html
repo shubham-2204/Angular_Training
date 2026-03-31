@@ -1,0 +1,16 @@
+<div class="favorites-page">
+
+    <div class="page-header">
+        <h1 class="page-title">{{ ui.favorites.title }}</h1>
+    </div>
+
+    <div class="empty-state" *ngIf="favorites.length === 0">
+        <p class="empty-message">{{ messages.empty.favorites }}</p>
+    </div>
+
+    <div class="favorites-list" *ngIf="favorites.length > 0">
+        <app-city-card *ngFor="let fav of favorites" [cityName]="fav.name" [countryName]="fav.country"
+            [timestamp]="fav.addedAt" [showRemove]="true" (removed)="onRemove($event)" />
+    </div>
+
+</div>

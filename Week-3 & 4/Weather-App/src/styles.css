@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --color-primary: rgba(139, 92, 246, 1);
+    --color-primary-lt: rgba(196, 181, 253, 1);
+    --color-success: rgba(16, 185, 129, 1);
+    --color-warning: rgba(245, 158, 11, 1);
+    --color-error: rgba(239, 68, 68, 1);
+    --color-text: rgba(255, 255, 255, 1);
+    --color-text-muted: rgba(255, 255, 255, 0.55);
+    --color-border: rgba(255, 255, 255, 0.1);
+    --color-bg: rgba(15, 12, 41, 1);
+    --color-card: rgba(255, 255, 255, 0.06);
+}
+
+html,
+body {
+    height: 100%;
+    font-family: 'Inter', sans-serif;
+    background: var(--color-bg);
+    color: var(--color-text);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+    color: var(--color-primary-lt);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+button {
+    font-family: 'Inter', sans-serif;
+}
+
+input,
+select,
+textarea {
+    font-family: 'Inter', sans-serif;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+::selection {
+    background: rgba(139, 92, 246, 0.3);
+    color: rgba(255, 255, 255, 1);
+}

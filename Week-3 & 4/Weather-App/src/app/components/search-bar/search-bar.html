@@ -1,0 +1,34 @@
+<div class="search-bar-wrapper">
+  <div class="search-row">
+    <div class="input-wrapper" [class.has-error]="validationError">
+      <input
+        type="text"
+        class="search-input"
+        [(ngModel)]="query"
+        [placeholder]="ui.searchBar.placeholder"
+        [attr.aria-label]="ui.searchBar.placeholder"
+        [attr.autocomplete]="'off'"
+        (keyup.enter)="onSearch()"
+      />
+      <button
+        class="clear-btn"
+        *ngIf="query"
+        (click)="onClear()"
+        [attr.aria-label]="ui.searchBar.clearLabel"
+      >
+        &times;
+      </button>
+    </div>
+    <button
+      class="search-btn"
+      (click)="onSearch()"
+      [disabled]="!query.trim()"
+    >
+      {{ ui.searchBar.buttonText }}
+    </button>
+  </div>
+
+  <p class="validation-error" *ngIf="validationError">
+    {{ validationError }}
+  </p>
+</div>

@@ -1,0 +1,21 @@
+<div class="city-card">
+    <div class="city-info">
+        <h3 class="city-name">{{ cityName }}</h3>
+        <p class="country-name" *ngIf="countryName">{{ countryName }}</p>
+        <p class="timestamp" *ngIf="timestamp">{{ formattedTime }}</p>
+    </div>
+
+    <div class="city-actions">
+
+        <a class="view-btn" [routerLink]="['/', appRoute.Weather, cityName]">{{ ui.favorites.viewWeather }}</a>
+
+        <button class="search-again-btn" *ngIf="showSearchAgain" (click)="onSearchAgain()">
+            {{ ui.history.searchAgain }}
+        </button>
+
+        <button class="remove-btn" *ngIf="showRemove" (click)="onRemove()"
+            [attr.aria-label]="ui.favorites.remove + ' ' + cityName">
+            {{ ui.favorites.remove }}
+        </button>
+    </div>
+</div>

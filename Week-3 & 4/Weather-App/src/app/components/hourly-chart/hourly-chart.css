@@ -1,0 +1,123 @@
+.hourly-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    backdrop-filter: blur(12px);
+}
+
+.hourly-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.85);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.hourly-scroll {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+.hourly-scroll::-webkit-scrollbar {
+    height: 4px;
+}
+
+.hourly-scroll::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.hourly-scroll::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 999px;
+}
+
+.hourly-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    min-width: 72px;
+    padding: 12px 8px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.hourly-item:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.18);
+}
+
+.hour-time {
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.55);
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.hour-icon {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+}
+
+.bar-wrapper {
+    width: 6px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 999px;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+}
+
+.temp-bar {
+    width: 100%;
+    background: linear-gradient(to top,
+            rgba(139, 92, 246, 1),
+            rgba(196, 181, 253, 1));
+    border-radius: 999px;
+    transition: height 0.6s ease;
+    min-height: 8px;
+}
+
+.hour-temp {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.9);
+    white-space: nowrap;
+}
+
+.hour-rain {
+    font-size: 0.72rem;
+    font-weight: 600;
+}
+
+.rain-high {
+    color: rgba(96, 165, 250, 1);
+}
+
+.rain-medium {
+    color: rgba(147, 197, 253, 1);
+}
+
+.rain-low {
+    color: rgba(255, 255, 255, 0.45);
+}
+
+.hourly-empty {
+    text-align: center;
+    padding: 24px;
+    color: rgba(255, 255, 255, 0.45);
+    font-size: 0.9rem;
+}

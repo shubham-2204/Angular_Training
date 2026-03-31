@@ -1,0 +1,46 @@
+<div class="forecast-page">
+
+    <div class="search-section">
+        <app-search-bar (citySearched)="onCitySearched($event)" />
+    </div>
+
+    <div class="loading-state" *ngIf="state.isLoading">
+        <div class="loading-spinner"></div>
+        <p class="loading-text">{{ ui.loading }}</p>
+    </div>
+
+    <div class="error-state" *ngIf="state.hasError">
+        <p class="error-message">{{ state.errorMessage }}</p>
+        <button class="retry-btn" (click)="onRetry()">{{ ui.retry }}</button>
+    </div>
+
+    <div class="forecast-content" *ngIf="!state.isLoading && !state.hasError && forecast">
+
+        <div class="forecast-header">
+            <h1 class="forecast-city">{{ forecast.location.name }}</h1>
+            <p class="forecast-region">
+                {{ forecast.location.region }}, {{ forecast.location.country }}
+            </p>
+        </div>
+
+        <div class="forecast-title-row">
+            <h2 class="section-title">{{ ui.forecastCard.title }}</h2>
+        </div>
+
+        <div class="forecast-grid">
+            <app-forecast-card *ngFor="let day of forecast.forecast.forecastday" [forecastDay]="day"
+                [tempUnit]="tempUnit" [city]="city" [class.selected]="selectedDay?.date === day.date"
+                (click)="selectDay(day)" />
+        </div>
+
+        <div class="hourly-section" *ngIf="selectedDay">
+            <h2 class="section-title">
+                {{ ui.hourlyChart.title }} —
+                {{ selectedDay.date | date: 'EEE, MMM d' }}
+            </h2>
+            <app-hourly-chart [hourlyData]="selectedHourly" [tempUnit]="tempUnit" />
+        </div>
+
+    </div>
+
+</div>

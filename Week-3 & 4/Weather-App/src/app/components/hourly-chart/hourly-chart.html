@@ -1,0 +1,40 @@
+<div class="hourly-wrapper">
+  <h3 class="hourly-title">{{ ui.hourlyChart.title }}</h3>
+
+  <div class="hourly-scroll">
+    <div
+      class="hourly-item"
+      *ngFor="let hour of hourlyData"
+    >
+      <span class="hour-time">{{ getFormattedTime(hour.time) }}</span>
+
+      <img
+        class="hour-icon"
+        [src]="'https:' + hour.condition.icon"
+        [alt]="hour.condition.text"
+      />
+
+      <div class="bar-wrapper">
+        <div
+          class="temp-bar"
+          [style.height.%]="getBarHeightPercent(getTemp(hour))"
+        ></div>
+      </div>
+
+      <span class="hour-temp">
+        {{ getTemp(hour) }}°{{ unitLabel }}
+      </span>
+
+      <span
+        class="hour-rain"
+        [ngClass]="getRainClass(hour.chance_of_rain)"
+      >
+        {{ hour.chance_of_rain }}%
+      </span>
+    </div>
+  </div>
+
+  <div class="hourly-empty" *ngIf="hourlyData.length === 0">
+    <p>{{ ui.hourlyChart.title }}</p>
+  </div>
+</div>

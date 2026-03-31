@@ -1,0 +1,49 @@
+<div class="home-page">
+    <div class="hero-section">
+        <h1 class="hero-title">{{ ui.app.name }}</h1>
+        <p class="hero-tagline">{{ ui.app.tagline }}</p>
+        <app-search-bar (citySearched)="onCitySearched($event)" />
+    </div>
+
+    <div class="loading-state" *ngIf="state.isLoading">
+        <div class="loading-spinner"></div>
+        <p class="loading-text">{{ ui.loading }}</p>
+    </div>
+
+    <div class="error-state" *ngIf="state.hasError">
+        <p class="error-message">{{ state.errorMessage }}</p>
+        <button class="retry-btn" (click)="state.hasError = false">
+            {{ ui.retry }}
+        </button>
+    </div>
+
+    <div class="content-section" *ngIf="!state.isLoading">
+
+        <div class="section-block" *ngIf="favorites.length > 0">
+            <div class="section-header">
+                <h2 class="section-title">{{ ui.favorites.title }}</h2>
+                <a class="section-link" [routerLink]="['/', appRoute.Favorites]">
+                    {{ ui.navbar.favorites }}
+                </a>
+            </div>
+            <div class="city-list">
+                <app-city-card *ngFor="let fav of favorites" [cityName]="fav.name" [countryName]="fav.country"
+                    [showRemove]="true" (removed)="onFavoriteRemoved($event)" />
+            </div>
+        </div>
+
+        <div class="section-block" *ngIf="recentHistory.length > 0">
+            <div class="section-header">
+                <h2 class="section-title">{{ ui.history.title }}</h2>
+                <a class="section-link" [routerLink]="['/', appRoute.History]">
+                    {{ ui.navbar.history }}
+                </a>
+            </div>
+            <div class="city-list">
+                <app-city-card *ngFor="let item of recentHistory" [cityName]="item.city" [timestamp]="item.searchedAt"
+                    [showSearchAgain]="true" (searchAgain)="onSearchAgain($event)" />
+            </div>
+        </div>
+
+    </div>
+</div>

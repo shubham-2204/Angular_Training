@@ -1,0 +1,95 @@
+.history-page {
+    min-height: 100vh;
+    padding: 40px 24px;
+    background: linear-gradient(135deg,
+            rgba(15, 12, 41, 1),
+            rgba(48, 43, 99, 1),
+            rgba(36, 36, 62, 1));
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 900px;
+    margin: 0 auto;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.page-title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: rgba(255, 255, 255, 1);
+}
+
+.clear-all-btn {
+    padding: 10px 20px;
+    border: 1px solid rgba(239, 68, 68, 0.35);
+    border-radius: 10px;
+    background: rgba(239, 68, 68, 0.1);
+    color: rgba(252, 165, 165, 1);
+    font-size: 0.85rem;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.clear-all-btn:hover {
+    background: rgba(239, 68, 68, 0.2);
+    border-color: rgba(239, 68, 68, 0.6);
+    color: rgba(255, 255, 255, 1);
+}
+
+.empty-state {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 24px;
+    max-width: 900px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.empty-message {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.35);
+    text-align: center;
+}
+
+.history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 900px;
+    margin: 0 auto;
+    width: 100%;
+    animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .history-page {
+        padding: 24px 16px;
+    }
+
+    .page-title {
+        font-size: 1.5rem;
+    }
+}

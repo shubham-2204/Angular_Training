@@ -1,0 +1,12 @@
+<nav class="navbar">
+  <div class="navbar-brand">
+    <a class="brand-link" [routerLink]="['/']">
+      <span class="brand-name">{{ ui.app.name }}</span>
+    </a>
+  </div>
+  <div class="navbar-links">
+    <a class="nav-link" [routerLink]="['/']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">{{ ui.navbar.home }}</a>
+    <a class="nav-link" [routerLink]="['/', appRoute.History]" routerLinkActive="active">{{ ui.navbar.history }}</a>
+    <a class="nav-link" [routerLink]="['/', appRoute.Favorites]" routerLinkActive="active">{{ ui.navbar.favorites }}</a>
+  </div>
+</nav>

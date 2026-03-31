@@ -1,0 +1,60 @@
+<div class="weather-card" [appWeatherBg]="conditionClass" [isDay]="weather.current.is_day">
+    <div class="card-header">
+        <div class="location-info">
+            <h2 class="city-name">{{ weather.location.name }}</h2>
+            <p class="region">{{ weather.location.region }}, {{ weather.location.country }}</p>
+            <p class="local-time">{{ weather.location.localtime }}</p>
+        </div>
+
+        <div class="header-actions">
+            <button class="favorite-btn" [ngClass]="isFavorite ? 'favorite-active' : 'favorite-inactive'"
+                (click)="toggleFavorite()"
+                [attr.aria-label]="isFavorite ? ui.weatherCard.removeFromFavorites : ui.weatherCard.addToFavorites">
+                {{ isFavorite ? ui.weatherCard.removeFromFavorites : ui.weatherCard.addToFavorites }}
+            </button>
+
+            <button class="unit-toggle-btn" (click)="toggleUnit()" [attr.aria-label]="ui.toggleUnit">
+                {{ unitLabel }}
+            </button>
+        </div>
+    </div>
+
+    <div class="temp-section">
+        <span class="temperature" [appTempColor]="weather.current.temp_c">
+            {{ temperature }}°{{ unitLabel }}
+        </span>
+        <p class="condition-text">{{ weather.current.condition.text }}</p>
+        <p class="feels-like">
+            {{ ui.weatherCard.feelsLike }} {{ feelsLike }}°{{ unitLabel }}
+        </p>
+    </div>
+
+    <div class="stats-grid">
+        <div class="stat-item">
+            <span class="stat-label">{{ ui.weatherCard.humidity }}</span>
+            <span class="stat-value">{{ weather.current.humidity }}%</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-label">{{ ui.weatherCard.wind }}</span>
+            <span class="stat-value">{{ weather.current.wind_kph }} km/h {{ weather.current.wind_dir }}</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-label">{{ ui.weatherCard.pressure }}</span>
+            <span class="stat-value">{{ weather.current.pressure_mb }} mb</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-label">{{ ui.weatherCard.visibility }}</span>
+            <span class="stat-value">{{ weather.current.vis_km }} km</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-label">{{ ui.weatherCard.uvIndex }}</span>
+            <span class="stat-value">{{ weather.current.uv }}</span>
+        </div>
+    </div>
+
+    <div class="card-footer">
+
+        <a class="forecast-link" [routerLink]="['/', appRoute.Forecast, weather.location.name]">{{
+            ui.weatherCard.viewForecast }}</a>
+    </div>
+</div>
