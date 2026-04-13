@@ -11,7 +11,7 @@ export class StorageService {
 
   getHistory(): SearchHistoryItem[] {
     const data = localStorage.getItem(this.HISTORY_KEY);
-    return data ? JSON.parse(data) : [];
+    return JSON.parse(data ?? '[]');
   }
 
   addToHistory(city: string): void {
@@ -36,7 +36,7 @@ export class StorageService {
 
   getFavorites(): FavoriteCity[] {
     const data = localStorage.getItem(this.FAVORITES_KEY);
-    return data ? JSON.parse(data) : [];
+    return JSON.parse(data ?? '[]');
   }
 
   addToFavorites(city: string, country: string): void {
