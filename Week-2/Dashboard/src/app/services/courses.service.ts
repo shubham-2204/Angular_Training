@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { catchError, delay, tap } from 'rxjs/operators';
-import { Course, LoadingState,CourseStatus} from '../models/dashboard.models';
+import { Course, LoadingState, CourseStatus } from '../models/dashboard.models';
+import { ERROR_MESSAGES } from '../constants/messages.constants'; // 👈 add this
 
 @Injectable({
   providedIn: 'root',
@@ -35,9 +36,9 @@ export class CoursesService {
         this.loadingState.next({
           isLoading: false,
           hasError: true,
-          errorMessage: 'Failed to load courses. Please try again.',
+          errorMessage: ERROR_MESSAGES.LOAD_COURSES_FAILED, // 👈 use constant here
         });
-        return throwError(() => new Error('Failed to load courses.'));
+        return throwError(() => new Error(ERROR_MESSAGES.LOAD_COURSES_FAILED));
       })
     ).subscribe();
   }
