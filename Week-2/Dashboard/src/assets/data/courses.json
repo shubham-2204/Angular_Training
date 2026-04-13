@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "name": "Data Structures & Algorithms",
+    "code": "CS-301",
+    "instructor": "Dr. Rajesh Kumar",
+    "credits": 4,
+    "progress": 75,
+    "status": "ongoing",
+    "schedule": "Mon, Wed, Fri — 9:00 AM"
+  },
+  {
+    "id": 2,
+    "name": "Database Management Systems",
+    "code": "CS-302",
+    "instructor": "Prof. Sunita Verma",
+    "credits": 4,
+    "progress": 60,
+    "status": "ongoing",
+    "schedule": "Tue, Thu — 11:00 AM"
+  },
+  {
+    "id": 3,
+    "name": "Operating Systems",
+    "code": "CS-303",
+    "instructor": "Dr. Amit Singh",
+    "credits": 3,
+    "progress": 90,
+    "status": "ongoing",
+    "schedule": "Mon, Wed — 2:00 PM"
+  },
+  {
+    "id": 4,
+    "name": "Computer Networks",
+    "code": "CS-304",
+    "instructor": "Prof. Neha Gupta",
+    "credits": 3,
+    "progress": 100,
+    "status": "completed",
+    "schedule": "Tue, Thu — 9:00 AM"
+  },
+  {
+    "id": 5,
+    "name": "Software Engineering",
+    "code": "CS-305",
+    "instructor": "Dr. Priya Mehta",
+    "credits": 3,
+    "progress": 100,
+    "status": "completed",
+    "schedule": "Mon, Fri — 11:00 AM"
+  },
+  {
+    "id": 6,
+    "name": "Machine Learning",
+    "code": "CS-401",
+    "instructor": "Dr. Vikram Rao",
+    "credits": 4,
+    "progress": 0,
+    "status": "upcoming",
+    "schedule": "Mon, Wed, Fri — 10:00 AM"
+  },
+  {
+    "id": 7,
+    "name": "Cloud Computing",
+    "code": "CS-402",
+    "instructor": "Prof. Ankit Joshi",
+    "credits": 3,
+    "progress": 0,
+    "status": "upcoming",
+    "schedule": "Tue, Thu — 2:00 PM"
+  }
+]

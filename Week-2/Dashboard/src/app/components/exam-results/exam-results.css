@@ -1,0 +1,441 @@
+.skeleton-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.skeleton-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.skeleton-stat {
+  height: 80px;
+  border-radius: 14px;
+}
+
+.skeleton-card {
+  background: rgba(255, 255, 255, 1);
+  border: 1px solid rgba(226, 232, 240, 1);
+  border-radius: 14px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.skeleton {
+  background: linear-gradient(90deg, rgba(241, 245, 249, 1) 25%, rgba(226, 232, 240, 1) 50%, rgba(241, 245, 249, 1) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+  border-radius: 6px;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.skeleton-title {
+  height: 16px;
+  width: 55%;
+}
+
+.skeleton-bar {
+  height: 8px;
+  width: 100%;
+  margin-top: 6px;
+}
+
+.error-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 48px 24px;
+  text-align: center;
+}
+
+.error-icon {
+  font-size: 2.5rem;
+}
+
+.error-message {
+  color: rgba(239, 68, 68, 1);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.retry-btn {
+  padding: 10px 24px;
+  border: none;
+  border-radius: 10px;
+  background: rgba(79, 70, 229, 1);
+  color: rgba(255, 255, 255, 1);
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.retry-btn:hover {
+  background: rgba(67, 56, 202, 1);
+}
+
+.results-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.semester-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.semester-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgba(100, 116, 139, 1);
+}
+
+.sem-btn {
+  padding: 7px 16px;
+  border: 2px solid rgba(226, 232, 240, 1);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 1);
+  color: rgba(100, 116, 139, 1);
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sem-btn:hover {
+  border-color: rgba(165, 180, 252, 1);
+  color: rgba(79, 70, 229, 1);
+}
+
+.sem-btn.active {
+  border-color: rgba(79, 70, 229, 1);
+  background: rgba(238, 242, 255, 1);
+  color: rgba(79, 70, 229, 1);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 14px;
+}
+
+.stat-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 18px;
+  background: rgba(255, 255, 255, 1);
+  border: 1px solid rgba(226, 232, 240, 1);
+  border-radius: 14px;
+  transition: box-shadow 0.2s ease;
+}
+
+.stat-card:hover {
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.08);
+  border-color: rgba(199, 210, 254, 1);
+}
+
+.stat-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: rgba(148, 163, 184, 1);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.stat-value {
+  font-size: 1.1rem;
+  font-weight: 800;
+  transition: color 0.3s ease;
+}
+
+.stat-value.value-success {
+  color: rgba(16, 185, 129, 1);
+}
+
+.stat-value.value-primary {
+  color: rgba(99, 102, 241, 1);
+}
+
+.stat-value.value-error {
+  color: rgba(239, 68, 68, 1);
+}
+
+.result-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.result-card {
+  background: rgba(255, 255, 255, 1);
+  border: 1px solid rgba(226, 232, 240, 1);
+  border-radius: 14px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.result-card:hover {
+  box-shadow: 0 4px 16px rgba(79, 70, 229, 0.07);
+}
+
+.result-card.pass {
+  border-left: 4px solid rgba(16, 185, 129, 1);
+}
+
+.result-card.fail {
+  border-left: 4px solid rgba(239, 68, 68, 1);
+  background: rgba(255, 250, 250, 1);
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.subject-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.subject-code {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: rgba(148, 163, 184, 1);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.subject-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: rgba(30, 41, 59, 1);
+}
+
+.exam-date {
+  font-size: 0.78rem;
+  color: rgba(148, 163, 184, 1);
+  font-weight: 500;
+}
+
+.grade-badge {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  border: 2px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  font-weight: 800;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.grade-badge.grade-a-plus {
+  color: rgba(16, 185, 129, 1);
+  border-color: rgba(16, 185, 129, 1);
+  background-color: rgba(240, 253, 244, 1);
+}
+
+.grade-badge.grade-a {
+  color: rgba(52, 211, 153, 1);
+  border-color: rgba(52, 211, 153, 1);
+  background-color: rgba(240, 253, 244, 1);
+}
+
+.grade-badge.grade-b-plus {
+  color: rgba(99, 102, 241, 1);
+  border-color: rgba(99, 102, 241, 1);
+  background-color: rgba(238, 242, 255, 1);
+}
+
+.grade-badge.grade-b {
+  color: rgba(129, 140, 248, 1);
+  border-color: rgba(129, 140, 248, 1);
+  background-color: rgba(238, 242, 255, 1);
+}
+
+.grade-badge.grade-c {
+  color: rgba(245, 158, 11, 1);
+  border-color: rgba(245, 158, 11, 1);
+  background-color: rgba(254, 243, 199, 1);
+}
+
+.grade-badge.grade-f {
+  color: rgba(239, 68, 68, 1);
+  border-color: rgba(239, 68, 68, 1);
+  background-color: rgba(254, 226, 226, 1);
+}
+
+.grade-badge.grade-default {
+  color: rgba(107, 114, 128, 1);
+  border-color: rgba(107, 114, 128, 1);
+  background-color: rgba(241, 245, 249, 1);
+}
+
+.marks-section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.marks-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.marks-label {
+  font-size: 0.78rem;
+  color: rgba(148, 163, 184, 1);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.marks-value {
+  font-size: 0.88rem;
+  font-weight: 700;
+  transition: color 0.3s ease;
+}
+
+.marks-value.grade-a-plus {
+  color: rgba(16, 185, 129, 1);
+}
+
+.marks-value.grade-a {
+  color: rgba(52, 211, 153, 1);
+}
+
+.marks-value.grade-b-plus {
+  color: rgba(99, 102, 241, 1);
+}
+
+.marks-value.grade-b {
+  color: rgba(129, 140, 248, 1);
+}
+
+.marks-value.grade-c {
+  color: rgba(245, 158, 11, 1);
+}
+
+.marks-value.grade-f {
+  color: rgba(239, 68, 68, 1);
+}
+
+.marks-value.grade-default {
+  color: rgba(107, 114, 128, 1);
+}
+
+.marks-bar.grade-a-plus {
+  background-color: rgba(16, 185, 129, 1);
+}
+
+.marks-bar.grade-a {
+  background-color: rgba(52, 211, 153, 1);
+}
+
+.marks-bar.grade-b-plus {
+  background-color: rgba(99, 102, 241, 1);
+}
+
+.marks-bar.grade-b {
+  background-color: rgba(129, 140, 248, 1);
+}
+
+.marks-bar.grade-c {
+  background-color: rgba(245, 158, 11, 1);
+}
+
+.marks-bar.grade-f {
+  background-color: rgba(239, 68, 68, 1);
+}
+
+.marks-bar.grade-default {
+  background-color: rgba(107, 114, 128, 1);
+}
+
+.marks-pct {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: rgba(148, 163, 184, 1);
+}
+
+.marks-track {
+  width: 100%;
+  height: 7px;
+  background: rgba(241, 245, 249, 1);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.marks-bar {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.8s ease, background-color 0.3s ease;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  width: fit-content;
+}
+
+.pass-badge {
+  background: rgba(209, 250, 229, 1);
+  color: rgba(6, 95, 70, 1);
+}
+
+.fail-badge {
+  background: rgba(254, 226, 226, 1);
+  color: rgba(153, 27, 27, 1);
+}

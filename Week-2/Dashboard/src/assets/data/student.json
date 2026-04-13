@@ -1,0 +1,12 @@
+{
+  "id": 1,
+  "name": "Shubham Sharma",
+  "email": "shubham.sharma@college.edu",
+  "phone": "9876543210",
+  "rollNumber": "CS-2022-047",
+  "department": "Computer Science & Engineering",
+  "semester": 6,
+  "avatarUrl": "https://api.dicebear.com/7.x/initials/svg?seed=Shubham Sharma&backgroundColor=4f46e5&textColor=ffffff",
+  "cgpa": 8.7,
+  "enrollmentYear": 2022
+}

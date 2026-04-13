@@ -1,0 +1,71 @@
+<div class="search-wrapper">
+
+  <div class="search-input-wrapper">
+    <span class="search-icon"></span>
+    <input type="text" class="search-input" [(ngModel)]="searchQuery" (ngModelChange)="onSearch()"
+      [attr.placeholder]="'Search courses, faculty, events, resources...'" [attr.aria-label]="'Live search'"
+      [attr.aria-expanded]="hasSearched" [attr.autocomplete]="'off'" />
+    <button class="clear-btn" *ngIf="searchQuery" (click)="clearSearch()" [attr.aria-label]="'Clear search'">
+      Clear
+    </button>
+  </div>
+
+  <div class="search-loading" *ngIf="state.isLoading">
+    <div class="loading-dots">
+      <span></span><span></span><span></span>
+    </div>
+    <p>Searching...</p>
+  </div>
+
+  <div class="error-state" *ngIf="state.hasError">
+    <p>{{ state.errorMessage }}</p>
+  </div>
+
+  <div class="initial-state" *ngIf="!hasSearched && !state.isLoading">
+    <span class="initial-icon"></span>
+    <p class="initial-text">Start typing to search across courses, faculty, events and resources.</p>
+    <div class="suggestion-chips">
+      <button class="chip" *ngFor="let s of ['Data Structures', 'Dr. Rajesh', 'Hackathon', 'NPTEL']"
+        (click)="searchQuery = s; onSearch()">
+        {{ s }}
+      </button>
+    </div>
+  </div>
+
+  <div class="results-section" *ngIf="hasSearched && !state.isLoading && !state.hasError">
+
+    <div class="category-bar">
+      <button *ngFor="let cat of categories" class="cat-btn" [class.active]="activeCategory === cat"
+        [attr.aria-pressed]="activeCategory === cat" (click)="activeCategory = cat">
+        {{ cat | titlecase }}
+        <span class="cat-count">{{ getCountByCategory(cat) }}</span>
+      </button>
+    </div>
+
+    <div class="no-results" *ngIf="filteredResults.length === 0">
+      <p>No results found for <strong>"{{ searchQuery }}"</strong></p>
+      <p class="no-results-sub">Try different keywords or browse categories.</p>
+    </div>
+
+    <div class="results-list" *ngIf="filteredResults.length > 0">
+      <p class="results-count">
+        {{ filteredResults.length }} result{{ filteredResults.length !== 1 ? 's' : '' }} found
+      </p>
+      <div class="result-card" *ngFor="let item of filteredResults"
+        [attr.aria-label]="item.title + ' - ' + item.category">
+        <div class="result-icon" [ngClass]="getCategoryClass(item.category)"></div>
+        <div class="result-body">
+          <div class="result-top">
+            <span class="result-title">{{ item.title }}</span>
+            <span class="result-badge" [ngClass]="getCategoryClass(item.category)">
+              {{ item.category | titlecase }}
+            </span>
+          </div>
+          <p class="result-desc">{{ item.description }}</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>

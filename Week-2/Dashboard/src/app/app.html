@@ -1,0 +1,46 @@
+<div class="app-wrapper">
+
+  <header class="top-bar">
+    <div class="top-bar-left">
+      <span class="college-logo"></span>
+      <div class="college-info">
+        <h1 class="college-name">EduPortal</h1>
+        <span class="college-sub">Student Dashboard</span>
+      </div>
+    </div>
+    <div class="top-bar-right">
+      <span class="current-date">{{ today | date: 'fullDate' }}</span>
+    </div>
+  </header>
+
+  <main class="dashboard-card">
+
+    <app-dashboard-tabs [activeTab]="activeTab" [unreadCount]="unreadCount" (tabChanged)="onTabChanged($event)" />
+
+    <div class="tab-content">
+
+      <div *ngIf="activeTab === tabId.Profile">
+        <app-student-profile />
+      </div>
+
+      <div *ngIf="activeTab === tabId.Courses">
+        <app-courses-list />
+      </div>
+
+      <div *ngIf="activeTab === tabId.Notifications">
+        <app-notifications />
+      </div>
+
+      <div *ngIf="activeTab === tabId.Search">
+        <app-live-search />
+      </div>
+
+      <div *ngIf="activeTab === tabId.Results">
+        <app-exam-results />
+      </div>
+
+    </div>
+
+  </main>
+
+</div>

@@ -1,0 +1,110 @@
+<div class="skeleton-list" *ngIf="state.isLoading">
+  <div class="skeleton-stats">
+    <div class="skeleton skeleton-stat" *ngFor="let i of [1,2,3]"></div>
+  </div>
+  <div class="skeleton-card" *ngFor="let i of [1,2,3]">
+    <div class="skeleton skeleton-title"></div>
+    <div class="skeleton skeleton-bar"></div>
+  </div>
+</div>
+
+<div class="error-state" *ngIf="state.hasError">
+  <span class="error-icon"></span>
+  <p class="error-message">{{ state.errorMessage }}</p>
+  <button class="retry-btn" (click)="loadResults()">Retry</button>
+</div>
+
+<div class="results-wrapper" *ngIf="!state.isLoading && !state.hasError">
+
+  <div class="semester-bar">
+    <span class="semester-label">Semester:</span>
+    <button *ngFor="let sem of availableSemesters" class="sem-btn" [class.active]="selectedSemester === sem"
+      [attr.aria-pressed]="selectedSemester === sem" [attr.aria-label]="'View Semester ' + sem + ' results'"
+      (click)="selectSemester(sem)">
+      Sem {{ sem }}
+    </button>
+  </div>
+
+  <div class="stats-grid">
+
+    <div class="stat-card">
+      <div class="stat-info">
+        <span class="stat-label">Overall</span>
+        <span class="stat-value"
+          [ngClass]="overallPercentage >= 75 ? 'value-success' : overallPercentage >= 50 ? 'value-primary' : 'value-error'">
+          {{ overallPercentage }}%
+        </span>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-info">
+        <span class="stat-label">Passed</span>
+        <span class="stat-value value-success">
+          {{ passCount }} / {{ filteredResults.length }}
+        </span>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-info">
+        <span class="stat-label">Failed</span>
+        <span class="stat-value" [ngClass]="failCount > 0 ? 'value-error' : 'value-success'">
+          {{ failCount }}
+        </span>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-info">
+        <span class="stat-label">Marks</span>
+        <span class="stat-value value-primary">
+          {{ totalMarksObtained }} / {{ totalMarks }}
+        </span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="result-list">
+    <div class="result-card" *ngFor="let result of filteredResults" [class.pass]="result.status === examStatus.Pass"
+      [class.fail]="result.status === examStatus.Fail" [attr.aria-label]="result.subject + ' - ' + result.status">
+      <div class="card-top">
+        <div class="subject-info">
+          <span class="subject-code">{{ result.subjectCode }}</span>
+          <h4 class="subject-name">{{ result.subject }}</h4>
+          <span class="exam-date">{{ result.examDate | date: 'mediumDate' }}</span>
+        </div>
+
+        <div class="grade-badge" [ngClass]="examService.getGradeClass(result.grade)">
+          {{ result.grade }}
+        </div>
+      </div>
+
+      <div class="marks-section">
+        <div class="marks-header">
+          <span class="marks-label">Marks Obtained</span>
+          <span class="marks-value" [ngClass]="examService.getGradeClass(result.grade)">
+            {{ result.marksObtained }} / {{ result.totalMarks }}
+            <span class="marks-pct">
+              ({{ getPercentage(result.marksObtained, result.totalMarks) }}%)
+            </span>
+          </span>
+        </div>
+        <div class="marks-track">
+          <div class="marks-bar" [ngClass]="examService.getGradeClass(result.grade)"
+            [style.width.%]="getPercentage(result.marksObtained, result.totalMarks)"
+            [attr.aria-valuenow]="getPercentage(result.marksObtained, result.totalMarks)" [attr.aria-valuemin]="0"
+            [attr.aria-valuemax]="100"></div>
+        </div>
+      </div>
+
+      <span class="status-badge" [class.pass-badge]="result.status === examStatus.Pass"
+        [class.fail-badge]="result.status === examStatus.Fail">
+        {{ result.status === examStatus.Pass ? 'Passed' : 'Failed' }}
+      </span>
+
+    </div>
+  </div>
+
+</div>

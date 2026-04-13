@@ -1,0 +1,71 @@
+<div class="skeleton-list" *ngIf="state.isLoading">
+  <div class="skeleton-card" *ngFor="let i of [1,2,3]">
+    <div class="skeleton skeleton-title"></div>
+    <div class="skeleton skeleton-sub"></div>
+    <div class="skeleton skeleton-bar"></div>
+  </div>
+</div>
+
+<div class="error-state" *ngIf="state.hasError">
+  <p class="error-message">{{ state.errorMessage }}</p>
+  <button class="retry-btn" (click)="coursesService.loadCourses()">Retry</button>
+</div>
+
+<div class="courses-wrapper" *ngIf="!state.isLoading && !state.hasError">
+
+  <div class="filter-bar">
+    <button *ngFor="let f of [courseStatus.All, courseStatus.Ongoing, courseStatus.Completed, courseStatus.Upcoming]"
+      class="filter-btn" [class.active]="activeFilter === f" [attr.aria-pressed]="activeFilter === f"
+      (click)="setFilter(f)">
+      {{ f | titlecase }}
+      <span class="filter-count">
+        {{ f === courseStatus.All ? courses.length : getCountByStatus(f) }}
+      </span>
+    </button>
+  </div>
+
+  <div class="empty-state" *ngIf="filteredCourses.length === 0">
+    <p>No {{ activeFilter }} courses found.</p>
+  </div>
+
+  <div class="courses-grid" *ngIf="filteredCourses.length > 0">
+    <div class="course-card" *ngFor="let course of filteredCourses" [attr.data-status]="course.status"
+      [attr.aria-label]="course.name + ' - ' + course.status">
+      <div class="card-header">
+        <div class="course-info">
+          <span class="course-code">{{ course.code }}</span>
+          <h3 class="course-name">{{ course.name }}</h3>
+          <p class="course-instructor">{{ course.instructor }}</p>
+        </div>
+        <span class="status-badge" [ngClass]="getStatusClass(course.status)">
+          {{ course.status | titlecase }}
+        </span>
+      </div>
+
+      <div class="course-meta">
+        <span class="meta-item">
+          {{ course.schedule }}
+        </span>
+        <span class="meta-item">
+          {{ course.credits }} Credits
+        </span>
+      </div>
+
+      <div class="progress-section" *ngIf="course.status !== courseStatus.Upcoming">
+        <div class="progress-header">
+          <span class="progress-label">Progress</span>
+          <span class="progress-value" [ngClass]="getProgressClass(course.progress)">
+            {{ course.progress }}%
+          </span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-bar" [ngClass]="getProgressClass(course.progress)" [style.width.%]="course.progress"
+            [attr.aria-valuenow]="course.progress" [attr.aria-valuemin]="0" [attr.aria-valuemax]="100">
+          </div>
+        </div>
+        <div class="upcoming-label" *ngIf="course.status === courseStatus.Upcoming">
+          Starting soon
+        </div>
+      </div>
+    </div>
+  </div>

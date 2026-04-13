@@ -1,0 +1,61 @@
+<div class="skeleton-list" *ngIf="state.isLoading">
+  <div class="skeleton-card" *ngFor="let i of [1,2,3]">
+    <div class="skeleton skeleton-icon"></div>
+    <div class="skeleton-info">
+      <div class="skeleton skeleton-title"></div>
+      <div class="skeleton skeleton-sub"></div>
+    </div>
+  </div>
+</div>
+
+<div class="error-state" *ngIf="state.hasError">
+  <span class="error-icon"></span>
+  <p class="error-message">{{ state.errorMessage }}</p>
+  <button class="retry-btn" (click)="notificationService.loadNotifications()">
+    Retry
+  </button>
+</div>
+
+<div class="notifications-wrapper" *ngIf="!state.isLoading && !state.hasError">
+  <div class="notif-header">
+    <div class="notif-title">
+      <h3>Notifications</h3>
+      <span class="unread-count" *ngIf="notificationService.unreadCount > 0">
+        {{ notificationService.unreadCount }} unread
+      </span>
+    </div>
+    <button class="mark-all-btn" (click)="notificationService.markAllAsRead()"
+      [disabled]="notificationService.unreadCount === 0" [attr.aria-label]="'Mark all notifications as read'">
+      Mark all read
+    </button>
+  </div>
+
+  <div class="empty-state" *ngIf="notifications.length === 0">
+    <p>No notifications yet.</p>
+  </div>
+
+  <div class="notif-list" *ngIf="notifications.length > 0">
+    <div class="notif-card" *ngFor="let notif of notifications" [class.unread]="!notif.isRead"
+      [attr.aria-live]="!notif.isRead ? 'polite' : null" [attr.aria-label]="notif.title + ' - ' + notif.message"
+      (click)="notificationService.markAsRead(notif.id)">
+      <div class="notif-icon" [ngClass]="getTypeClass(notif.type)">
+      </div>
+
+      <div class="notif-body">
+        <div class="notif-top">
+          <span class="notif-title-text" [class.unread-title]="!notif.isRead" [class.read-title]="notif.isRead">
+            {{ notif.title }}
+          </span>
+          <span class="notif-time">{{ formatTime(notif.timestamp) }}</span>
+        </div>
+        <p class="notif-message">{{ notif.message }}</p>
+        <span class="type-badge" [ngClass]="getTypeClass(notif.type)">
+          {{ notif.type | titlecase }}
+        </span>
+      </div>
+
+      <span class="unread-dot" *ngIf="!notif.isRead" [attr.aria-label]="'Unread notification'"></span>
+
+    </div>
+  </div>
+</div>

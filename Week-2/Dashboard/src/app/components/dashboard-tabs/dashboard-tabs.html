@@ -1,0 +1,21 @@
+<div class="tabs-wrapper">
+  <button
+    *ngFor="let tab of tabs"
+    class="tab-btn"
+    [class.active]="activeTab === tab.id"
+    [attr.aria-selected]="activeTab === tab.id"
+    [attr.aria-label]="'Navigate to ' + tab.label"
+    [id]="'tab-' + tab.id"
+    (click)="selectTab(tab.id)"
+  >
+    <span class="tab-icon">{{ tab.icon }}</span>
+    <span class="tab-label">{{ tab.label }}</span>
+    <span
+      *ngIf="tab.id === tabId.Notifications && unreadCount > 0"
+      class="unread-badge"
+      [attr.aria-label]="unreadCount + ' unread notifications'"
+    >
+      {{ unreadCount }}
+    </span>
+  </button>
+</div>
