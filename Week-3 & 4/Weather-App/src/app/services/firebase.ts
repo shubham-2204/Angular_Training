@@ -36,7 +36,7 @@ export class FirebaseService {
   incrementSearchCounter(city: string): Observable<void> {
     const counterRef = ref(this.db, `counters/${city.toLowerCase()}`);
     return from(runTransaction(counterRef, (current) => {
-      return (current || 0) + 1;
+      return (current ?? 0) + 1;
     })).pipe(
       map(() => void 0),
       catchError(() => throwError(() => new Error('Failed to update counter.')))
