@@ -1,0 +1,27 @@
+<div class="weather-dashboard-page">
+
+  <div class="search-section">
+    <app-search-bar (citySearched)="onCitySearched($event)" />
+  </div>
+
+  <div class="loading-state" *ngIf="state.isLoading">
+    <div class="loading-spinner"></div>
+    <p class="loading-text">{{ ui.loading }}</p>
+  </div>
+
+  <div class="error-state" *ngIf="state.hasError">
+    <p class="error-message">{{ state.errorMessage }}</p>
+    <button class="retry-btn" (click)="onRetry()">
+      {{ ui.retry }}
+    </button>
+  </div>
+
+  <div class="dashboard-content" *ngIf="!state.isLoading && !state.hasError && weather">
+    <app-weather-card
+      [weather]="weather"
+      [tempUnit]="tempUnit"
+      (unitToggled)="onUnitToggled($event)"
+    />
+  </div>
+
+</div>

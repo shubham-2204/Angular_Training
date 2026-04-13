@@ -1,0 +1,122 @@
+.forecast-card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 18px;
+    backdrop-filter: blur(12px);
+    transition: all 0.25s ease;
+}
+
+.forecast-card:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+}
+
+.forecast-date {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.75);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.forecast-condition {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.condition-icon {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+}
+
+.condition-text {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 500;
+    line-height: 1.3;
+}
+
+.temp-range {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.temp-max {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: rgba(255, 255, 255, 1);
+}
+
+.temp-min {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.forecast-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.stat-label {
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+
+.stat-value {
+    font-size: 0.88rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 600;
+}
+
+.rain-high {
+    color: rgba(96, 165, 250, 1);
+}
+
+.rain-medium {
+    color: rgba(147, 197, 253, 1);
+}
+
+.rain-low {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.hourly-link {
+    display: block;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.82rem;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.hourly-link:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 1);
+    border-color: rgba(255, 255, 255, 0.35);
+}

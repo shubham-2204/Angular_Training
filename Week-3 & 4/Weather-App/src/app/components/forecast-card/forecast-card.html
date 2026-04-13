@@ -1,0 +1,47 @@
+<div class="forecast-card">
+    <div class="forecast-date">{{ dayName }}</div>
+
+    <div class="forecast-condition">
+        <img class="condition-icon" [src]="'https:' + forecastDay.day.condition.icon"
+            [alt]="forecastDay.day.condition.text" />
+        <span class="condition-text">{{ forecastDay.day.condition.text }}</span>
+    </div>
+
+    <div class="temp-range">
+        <span class="temp-max">
+            {{ ui.forecastCard.maxTemp }} {{ maxTemp }}°{{ unitLabel }}
+        </span>
+        <span class="temp-min">
+            {{ ui.forecastCard.minTemp }} {{ minTemp }}°{{ unitLabel }}
+        </span>
+    </div>
+
+    <div class="forecast-stats">
+        <div class="stat-row">
+            <span class="stat-label">{{ ui.forecastCard.chanceOfRain }}</span>
+            <span class="stat-value" [ngClass]="rainChanceClass">
+                {{ forecastDay.day.daily_chance_of_rain }}%
+            </span>
+        </div>
+        <div class="stat-row">
+            <span class="stat-label">{{ ui.weatherCard.humidity }}</span>
+            <span class="stat-value">{{ forecastDay.day.avghumidity }}%</span>
+        </div>
+        <div class="stat-row">
+            <span class="stat-label">{{ ui.weatherCard.uvIndex }}</span>
+            <span class="stat-value">{{ forecastDay.day.uv }}</span>
+        </div>
+        <div class="stat-row">
+            <span class="stat-label">{{ ui.weatherCard.sunrise }}</span>
+            <span class="stat-value">{{ forecastDay.astro.sunrise }}</span>
+        </div>
+        <div class="stat-row">
+            <span class="stat-label">{{ ui.weatherCard.sunset }}</span>
+            <span class="stat-value">{{ forecastDay.astro.sunset }}</span>
+        </div>
+    </div>
+
+
+    <a class="hourly-link" [routerLink]="['/', appRoute.Forecast, city]" [fragment]="forecastDay.date">{{
+        ui.forecastCard.viewHourly }}</a>
+</div>

@@ -1,0 +1,20 @@
+<div class="history-page">
+
+    <div class="page-header">
+        <h1 class="page-title">{{ ui.history.title }}</h1>
+        <button class="clear-all-btn" *ngIf="history.length > 0" (click)="onClearAll()">
+            {{ ui.history.clearAll }}
+        </button>
+    </div>
+
+    <div class="empty-state" *ngIf="history.length === 0">
+        <p class="empty-message">{{ messages.empty.history }}</p>
+    </div>
+
+    <div class="history-list" *ngIf="history.length > 0">
+        <app-city-card *ngFor="let item of history" [cityName]="item.city" [timestamp]="item.searchedAt"
+            [showSearchAgain]="true" [showRemove]="true" (searchAgain)="onSearchAgain($event)"
+            (removed)="onRemove($event)" />
+    </div>
+
+</div>
